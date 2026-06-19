@@ -25,7 +25,9 @@
       status: statusSelect ? statusSelect.value : 'healthy',
       lastChecked: new Date().toISOString()
     });
-    store.setSelectedRecord(null);
+    if (store && typeof store.setSelectedRecord === 'function') {
+      store.setSelectedRecord(null);
+    }
     window.location.href = 'record-operations-pulsebadge-mini.html';
   }
 

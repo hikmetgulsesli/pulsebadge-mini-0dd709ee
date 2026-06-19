@@ -27,7 +27,7 @@
   }
 
   function wire() {
-    document.querySelectorAll('[data-action-id="ACT_SEARCH_RECORDS"]').forEach(function (el) {
+    document.querySelectorAll('[data-action-id="ACT_SEARCH_RECORDS"], [data-action-id="ACT_FILTER"]').forEach(function (el) {
       if (el.tagName.toLowerCase() === 'input') {
         el.addEventListener('input', handleInput);
       } else {

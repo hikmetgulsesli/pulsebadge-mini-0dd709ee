@@ -3,7 +3,8 @@
 
   function handleSelect(event) {
     const store = window.__PB_STORE__;
-    const card = event.currentTarget.closest('.record-card');
+    const trigger = event.target.closest('[data-action-id="ACT_SELECT_RECORD"]');
+    const card = trigger ? trigger.closest('.record-card') : null;
     const recordId = card ? card.getAttribute('data-record-id') : null;
     if (!recordId) return;
     if (store && typeof store.setSelectedRecord === 'function') {
@@ -13,8 +14,10 @@
   }
 
   function wire() {
-    document.querySelectorAll('[data-action-id="ACT_SELECT_RECORD"]').forEach(function (el) {
-      el.addEventListener('click', handleSelect);
+    document.addEventListener('click', function (event) {
+      if (event.target.closest('[data-action-id="ACT_SELECT_RECORD"]')) {
+        handleSelect(event);
+      }
     });
   }
 
