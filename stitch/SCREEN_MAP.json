@@ -1,0 +1,29 @@
+[
+  {
+    "screenId": "d55e3a8cc3ff4912a9dca95d0e88b6bd",
+    "name": "Record Editor - PulseBadge Mini",
+    "type": "form",
+    "description": "Record Editor - PulseBadge Mini screen",
+    "surfaceIds": [
+      "SURF_RECORD_EDITOR"
+    ]
+  },
+  {
+    "screenId": "c59ead8eb3ea4157861b1d3dc80c9ac5",
+    "name": "Insights - PulseBadge Mini",
+    "type": "app-screen",
+    "description": "Insights - PulseBadge Mini screen",
+    "surfaceIds": [
+      "SURF_INSIGHTS"
+    ]
+  },
+  {
+    "screenId": "888e513033264b048bb10087d9c8c06b",
+    "name": "Record Operations - PulseBadge Mini",
+    "type": "app-screen",
+    "description": "Record Operations - PulseBadge Mini screen",
+    "surfaceIds": [
+      "SURF_RECORD_OPERATIONS"
+    ]
+  }
+]

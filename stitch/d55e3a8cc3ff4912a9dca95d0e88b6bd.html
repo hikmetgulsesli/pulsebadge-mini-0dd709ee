@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PulseBadge Mini - Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Geist:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary": "#000000",
+                        "surface-dim": "#dcd9db",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "primary-container": "#131b2e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "error-container": "#ffdad6",
+                        "secondary": "#505f76",
+                        "outline": "#76777d",
+                        "surface-container": "#f0edef",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary-container": "#271901",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-container": "#7c839b",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f6f3f5",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1b1d",
+                        "inverse-surface": "#303032",
+                        "on-background": "#1b1b1d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#d0e1fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "outline-variant": "#c6c6cd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "stack-sm": "4px",
+                        "unit": "4px",
+                        "stack-lg": "16px",
+                        "stack-md": "8px",
+                        "container-padding": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono-data": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "mono-data": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden bg-surface dark:bg-background border-b border-outline-variant dark:border-outline text-primary dark:text-on-primary-fixed font-headline-sm text-headline-sm flex justify-between items-center w-full px-container-padding h-12 sticky top-0 z-50">
+<div class="font-bold">PulseBadge Mini</div>
+<div class="flex gap-gutter">
+<button class="hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 p-1 rounded-DEFAULT"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 p-1 rounded-DEFAULT"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+</div>
+</header>
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex bg-surface dark:bg-background border-r border-outline-variant dark:border-outline h-screen w-64 flex-col py-stack-lg gap-stack-md sticky top-0 z-40 transition-all duration-200 ease-in-out shrink-0">
+<div class="px-container-padding mb-stack-md">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">System Health</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All systems nominal</p>
+</div>
+<div class="flex flex-col gap-unit">
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest font-body-sm text-body-sm flex items-center gap-gutter px-container-padding py-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Operations
+            </a>
+<a class="bg-secondary-container dark:bg-secondary-fixed-dim text-on-secondary-container dark:text-on-secondary-fixed border-l-2 border-primary font-bold font-body-sm text-body-sm flex items-center gap-gutter px-container-padding py-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+                Editor
+            </a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low hover:bg-surface-container-high dark:hover:bg-surface-container-highest font-body-sm text-body-sm flex items-center gap-gutter px-container-padding py-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Insights
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-container-padding md:p-6 lg:p-8 flex flex-col gap-stack-lg max-w-4xl mx-auto w-full">
+<!-- Header Section -->
+<div class="flex justify-between items-end pb-stack-md border-b border-outline-variant">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Record Editor</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm">Create or edit a service monitoring record.</p>
+</div>
+<!-- Unsaved Changes Banner (Hidden by default, shown for demo) -->
+<div class="bg-surface-container-highest text-on-surface text-body-sm font-body-sm py-1 px-3 border border-outline-variant rounded-DEFAULT flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">error</span>
+                Unsaved changes
+            </div>
+</div>
+<!-- Editor Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT flex flex-col hover:border-outline-variant transition-colors duration-200 shadow-sm">
+<form class="p-container-padding flex flex-col gap-stack-lg">
+<!-- Service Name (Required) -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface flex items-center gap-1" for="serviceName">
+                        Service Name
+                        <span aria-hidden="true" class="text-error">*</span>
+</label>
+<input class="font-mono-data text-mono-data bg-surface border border-error text-on-surface rounded-DEFAULT px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors" id="serviceName" placeholder="e.g., Auth API" type="text" value=""/>
+<p class="font-body-sm text-body-sm text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Service Name is required
+                    </p>
+</div>
+<!-- Service Identifier (Optional) -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface" for="serviceId">Service Identifier <span class="text-on-surface-variant font-normal normal-case">(Optional)</span></label>
+<input class="font-mono-data text-mono-data bg-surface border border-outline-variant text-on-surface rounded-DEFAULT px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors hover:border-outline" id="serviceId" placeholder="srv-auth-01" type="text"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Unique internal ID for correlation.</p>
+</div>
+<!-- Status Dropdown -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface" for="serviceStatus">Initial Status</label>
+<div class="relative">
+<select class="appearance-none w-full font-body-md text-body-md bg-surface border border-outline-variant text-on-surface rounded-DEFAULT px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors hover:border-outline pr-8" id="serviceStatus">
+<option selected="" value="ok">OK (Nominal)</option>
+<option value="warn">Warn (Degraded)</option>
+<option value="down">Down (Outage)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant flex justify-end gap-stack-md">
+<button class="font-body-sm text-body-sm text-on-surface border border-outline-variant rounded-DEFAULT px-4 py-2 hover:bg-surface-container transition-colors active:scale-95 duration-150" type="button">
+                        Cancel
+                    </button>
+<button class="font-body-sm text-body-sm bg-primary text-on-primary border border-primary rounded-DEFAULT px-4 py-2 hover:bg-inverse-surface transition-colors active:scale-95 duration-150" type="submit">
+                        Save Record
+                    </button>
+</div>
+</form>
+</div>
+</main>
+</body></html>

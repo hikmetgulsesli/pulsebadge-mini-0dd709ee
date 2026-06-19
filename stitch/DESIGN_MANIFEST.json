@@ -1,0 +1,35 @@
+[
+  {
+    "screenId": "d55e3a8cc3ff4912a9dca95d0e88b6bd",
+    "title": "Record Editor - PulseBadge Mini",
+    "htmlFile": "d55e3a8cc3ff4912a9dca95d0e88b6bd.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzU1MDFmODI3YmYwYjQ0NmM4OTAxZTcwN2I5MDQ2N2JjEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDkwNjU2NDQ4MTEyNTA5NTM2Mg&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/pulsebadge-mini-0dd709ee/stitch/d55e3a8cc3ff4912a9dca95d0e88b6bd.html",
+    "surfaceIds": [
+      "SURF_RECORD_EDITOR"
+    ]
+  },
+  {
+    "screenId": "c59ead8eb3ea4157861b1d3dc80c9ac5",
+    "title": "Insights - PulseBadge Mini",
+    "htmlFile": "c59ead8eb3ea4157861b1d3dc80c9ac5.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2E3MWMyMzhkYzJkOTRhYWI5N2RlMTYxNTFjMDA3MjZiEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDkwNjU2NDQ4MTEyNTA5NTM2Mg&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/pulsebadge-mini-0dd709ee/stitch/c59ead8eb3ea4157861b1d3dc80c9ac5.html",
+    "surfaceIds": [
+      "SURF_INSIGHTS"
+    ]
+  },
+  {
+    "screenId": "888e513033264b048bb10087d9c8c06b",
+    "title": "Record Operations - PulseBadge Mini",
+    "htmlFile": "888e513033264b048bb10087d9c8c06b.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2YwMDc5MjhhYzg5MjQ5NThhZmYzMTNhOGM1YWIzNDU2EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDkwNjU2NDQ4MTEyNTA5NTM2Mg&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/pulsebadge-mini-0dd709ee/stitch/888e513033264b048bb10087d9c8c06b.html",
+    "surfaceIds": [
+      "SURF_RECORD_OPERATIONS"
+    ]
+  }
+]

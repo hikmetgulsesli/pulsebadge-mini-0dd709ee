@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PulseBadge Mini - Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary": "#000000",
+                        "surface-dim": "#dcd9db",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "primary-container": "#131b2e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "error-container": "#ffdad6",
+                        "secondary": "#505f76",
+                        "outline": "#76777d",
+                        "surface-container": "#f0edef",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary-container": "#271901",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-container": "#7c839b",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f6f3f5",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1b1d",
+                        "inverse-surface": "#303032",
+                        "on-background": "#1b1b1d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#d0e1fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "outline-variant": "#c6c6cd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "stack-sm": "4px",
+                        "unit": "4px",
+                        "stack-lg": "16px",
+                        "stack-md": "8px",
+                        "container-padding": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono-data": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "mono-data": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Utilitarian Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #76777d; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen w-full flex overflow-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex flex-col h-screen w-64 bg-surface border-r border-outline-variant py-stack-lg gap-stack-md shrink-0 z-20 relative">
+<div class="px-container-padding mb-stack-md">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">System Health</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All systems nominal</p>
+</div>
+<div class="flex flex-col gap-unit">
+<a class="flex items-center px-container-padding py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-gutter text-outline group-hover:text-on-surface">dashboard</span>
+<span class="font-body-sm text-body-sm">Operations</span>
+</a>
+<a class="flex items-center px-container-padding py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-gutter text-outline group-hover:text-on-surface">edit</span>
+<span class="font-body-sm text-body-sm">Editor</span>
+</a>
+<!-- Active Tab: Insights -->
+<a class="flex items-center px-container-padding py-stack-md bg-secondary-container text-on-secondary-container border-l-2 border-primary font-bold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon-fill mr-gutter text-primary">analytics</span>
+<span class="font-body-sm text-body-sm text-primary">Insights</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar (from JSON) -->
+<header class="bg-surface text-primary border-b border-outline-variant flex justify-between items-center w-full px-container-padding h-12 shrink-0 z-10">
+<div class="flex items-center gap-gutter">
+<button class="md:hidden text-on-surface-variant hover:bg-surface-container transition-colors p-1 rounded-DEFAULT active:scale-95 duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight">PulseBadge Mini</span>
+</div>
+<div class="flex items-center gap-unit">
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150 p-1.5 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button aria-label="settings" class="text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150 p-1.5 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-container-padding bg-background relative">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Activity Insights</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm">Last 7 days · Production Environment</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit px-3 py-1.5 border border-outline-variant rounded-DEFAULT text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container transition-colors active:scale-95 duration-150 bg-surface">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter Insights
+                    </button>
+<button class="flex items-center gap-unit px-3 py-1.5 border border-outline-variant rounded-DEFAULT text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container transition-colors active:scale-95 duration-150 bg-surface">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        JSON Snapshot
+                    </button>
+</div>
+</div>
+<!-- Actionable Hint Banner -->
+<div class="bg-error-container border border-error bg-opacity-20 rounded-lg p-stack-md mb-stack-lg flex items-start gap-stack-md">
+<span class="material-symbols-outlined text-error icon-fill shrink-0 mt-0.5">warning</span>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-error-container">3 services require attention</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm">Multiple intermittent failures detected on Auth API, Payment Gateway, and Image Processing Worker over the last 4 hours.</p>
+</div>
+<button class="text-error font-body-sm text-body-sm font-semibold hover:underline">View Logs</button>
+</div>
+<!-- State Distribution Metrics (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<!-- Metric 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack-lg flex flex-col justify-between hover:border-outline transition-colors group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Global Uptime</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">public</span>
+</div>
+<div>
+<div class="text-[32px] leading-tight font-mono-data font-bold text-primary">99.84%</div>
+<div class="flex items-center gap-unit mt-stack-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+<span class="font-mono-data text-mono-data">-0.12% vs last week</span>
+</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack-lg flex flex-col justify-between hover:border-outline transition-colors group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Current State</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">dns</span>
+</div>
+<div class="flex gap-stack-lg">
+<div>
+<div class="text-[32px] leading-tight font-mono-data font-bold text-primary">42</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm flex items-center gap-unit">
+<div class="w-2 h-2 rounded-full bg-secondary"></div> OK
+                            </div>
+</div>
+<div>
+<div class="text-[32px] leading-tight font-mono-data font-bold text-error">3</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm flex items-center gap-unit">
+<div class="w-2 h-2 rounded-full bg-error"></div> Down
+                            </div>
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack-lg flex flex-col justify-between hover:border-outline transition-colors group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Total Incidents</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">history</span>
+</div>
+<div>
+<div class="text-[32px] leading-tight font-mono-data font-bold text-primary">14</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm">
+                            Resolved: 11 · Active: 3
+                        </div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden">
+<div class="px-container-padding py-stack-md border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Recent Activity Log</h3>
+<button class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors">VIEW ALL</button>
+</div>
+<div class="flex flex-col">
+<!-- Event Item 1 (Down) -->
+<div class="flex items-start px-container-padding py-stack-md border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-24 shrink-0 font-mono-data text-mono-data text-on-surface-variant mt-0.5">10:42:01Z</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center gap-stack-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-DEFAULT bg-error text-on-error font-label-caps text-label-caps shrink-0">DOWN</span>
+<div class="font-mono-data text-mono-data font-medium text-primary">srv-auth-api-prd</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Connection timeout after 3000ms.</div>
+</div>
+</div>
+<!-- Event Item 2 (Up) -->
+<div class="flex items-start px-container-padding py-stack-md border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-24 shrink-0 font-mono-data text-mono-data text-on-surface-variant mt-0.5">10:38:15Z</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center gap-stack-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-DEFAULT bg-secondary-container text-on-secondary-container font-label-caps text-label-caps shrink-0 border border-secondary-fixed-dim">OK</span>
+<div class="font-mono-data text-mono-data font-medium text-primary">db-replica-02</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Service recovered. Response time: 42ms.</div>
+</div>
+</div>
+<!-- Event Item 3 (Info) -->
+<div class="flex items-start px-container-padding py-stack-md border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-24 shrink-0 font-mono-data text-mono-data text-on-surface-variant mt-0.5">09:15:00Z</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center gap-stack-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-DEFAULT bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps text-label-caps shrink-0">CONFIG</span>
+<div class="font-mono-data text-mono-data font-medium text-primary">sys-monitor-agent</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Threshold updated for memory usage (&gt;85%).</div>
+</div>
+</div>
+<!-- Event Item 4 (Down) -->
+<div class="flex items-start px-container-padding py-stack-md hover:bg-surface-container-low transition-colors">
+<div class="w-24 shrink-0 font-mono-data text-mono-data text-on-surface-variant mt-0.5">08:50:22Z</div>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center gap-stack-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-DEFAULT bg-error text-on-error font-label-caps text-label-caps shrink-0">DOWN</span>
+<div class="font-mono-data text-mono-data font-medium text-primary">worker-image-proc</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Process terminated unexpectedly. Exit code 137.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, included for guidance completion) -->
+<div class="hidden mt-stack-lg border border-dashed border-outline-variant rounded-lg p-12 flex flex-col items-center justify-center text-center bg-surface-container-lowest" id="empty-state">
+<span class="material-symbols-outlined text-[48px] text-outline-variant mb-stack-md">monitoring</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary mb-stack-sm">No insight data available yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-stack-lg">Connect monitors or wait for initial polling cycles to complete. Event history will populate here automatically.</p>
+<button class="px-4 py-2 bg-primary text-on-primary font-label-caps text-label-caps rounded-DEFAULT hover:bg-inverse-surface transition-colors">ADD MONITOR</button>
+</div>
+</main>
+</div>
+</body></html>
