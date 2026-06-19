@@ -54,10 +54,10 @@
           grid.innerHTML = '';
           const safeCounts = counts || { total: 0, healthy: 0, warning: 0, critical: 0 };
           const metrics = [
-            { key: 'total', label: 'Total', value: safeCounts.total },
-            { key: 'healthy', label: 'Healthy', value: safeCounts.healthy },
-            { key: 'warning', label: 'Warning', value: safeCounts.warning },
-            { key: 'critical', label: 'Critical', value: safeCounts.critical }
+            { key: 'total', label: 'Total', value: safeCounts.total || 0 },
+            { key: 'healthy', label: 'Healthy', value: safeCounts.healthy || 0 },
+            { key: 'warning', label: 'Warning', value: safeCounts.warning || 0 },
+            { key: 'critical', label: 'Critical', value: safeCounts.critical || 0 }
           ];
           metrics.forEach(function (metric) {
             const card = document.createElement('div');
