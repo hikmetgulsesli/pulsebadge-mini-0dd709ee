@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insights - PulseBadge Mini</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="app-root" class="app-shell" data-setfarm-root="insights" data-testid="setfarm-app-root">
+      <nav class="app-nav" aria-label="Primary">
+        <div class="app-brand">
+          <span class="app-brand-mark">●</span>
+          <span class="app-brand-name">PulseBadge Mini</span>
+        </div>
+        <div class="app-nav-links">
+          <a class="app-nav-link" href="record-operations-pulsebadge-mini.html">Operations</a>
+          <a class="app-nav-link" href="record-editor-pulsebadge-mini.html">Editor</a>
+          <a class="app-nav-link is-active" href="insights-pulsebadge-mini.html">Insights</a>
+        </div>
+        <div class="app-nav-meta">
+          <span class="storage-status" data-testid="storage-status">ready</span>
+          <button type="button" class="app-button app-button--small" onclick="console.log('menu')" data-action-id="ACT_MENU" aria-label="Menu">menu</button>
+          <button type="button" class="app-button app-button--small" onclick="console.log('notifications')" data-action-id="ACT_NOTIFICATIONS" aria-label="Notifications">notifications</button>
+          <button type="button" class="app-button app-button--small" onclick="console.log('settings')" data-action-id="ACT_SETTINGS" aria-label="Settings">settings</button>
+        </div>
+      </nav>
+      <main class="app-main" data-testid="app-main">
+        <header class="screen-header">
+          <h2>Insights</h2>
+          <p class="screen-summary">High-level health overview.</p>
+        </header>
+        <div class="insights-grid" data-testid="insights-grid"></div>
+        <div class="screen-controls">
+          <button type="button" class="app-button" onclick="void(0)" data-action-id="ACT_FILTER_INSIGHTS" aria-label="Filter insights">Filter Insights</button>
+          <button type="button" class="app-button app-button--secondary" onclick="void(0)" data-action-id="ACT_EXPORT_SUMMARY" aria-label="Export JSON snapshot">JSON Snapshot</button>
+          <button type="button" class="app-button app-button--secondary" onclick="console.log('view logs')" data-action-id="ACT_VIEW_LOGS" aria-label="View logs">View Logs</button>
+        </div>
+        <div class="screen-controls" style="margin-top: 20px;">
+          <button type="button" class="app-button" onclick="void(0)" data-action-id="ACT_VIEW_ALL" aria-label="View all monitors">VIEW ALL</button>
+          <button type="button" class="app-button app-button--primary" onclick="void(0)" data-action-id="ACT_ADD_MONITOR" aria-label="Add monitor">ADD MONITOR</button>
+        </div>
+        <div class="snapshot-panel is-hidden" data-testid="snapshot-panel" style="margin-top: 20px;"></div>
+      </main>
+    </div>
+    <script src="assets/js/pulsebadge-mini.storage.js"></script>
+    <script src="assets/js/pulsebadge-mini.state.js"></script>
+    <script>
+      (function () {
+        'use strict';
+        function renderInsightsGrid(records, counts) {
+          const grid = document.querySelector('[data-testid="insights-grid"]');
+          if (!grid) return;
+          grid.innerHTML = '';
+          const metrics = [
+            { key: 'total', label: 'Total', value: counts.total },
+            { key: 'healthy', label: 'Healthy', value: counts.healthy },
+            { key: 'warning', label: 'Warning', value: counts.warning },
+            { key: 'critical', label: 'Critical', value: counts.critical }
+          ];
+          metrics.forEach(function (metric) {
+            const card = document.createElement('div');
+            card.className = 'insight-card insight-card--' + metric.key;
+            card.setAttribute('data-metric', metric.key);
+            const value = document.createElement('span');
+            value.className = 'insight-value';
+            value.textContent = metric.value;
+            card.appendChild(value);
+            const label = document.createElement('span');
+            label.className = 'insight-label';
+            label.textContent = metric.label;
+            card.appendChild(label);
+            grid.appendChild(card);
+          });
+        }
+        function renderSnapshot(state) {
+          const panel = document.querySelector('[data-testid="snapshot-panel"]');
+          if (!panel) return;
+          if (state.activePanel === 'snapshot') {
+            panel.textContent = JSON.stringify({ records: state.records, counts: state.counts }, null, 2);
+            panel.classList.remove('is-hidden');
+          } else {
+            panel.classList.add('is-hidden');
+            panel.textContent = '';
+          }
+        }
+        function bootstrapPage() {
+          const fixtures = window.__PULSEBADGE_FIXTURES__ || { records: [], preferences: { defaultScreen: 'operations' } };
+          const storage = PulseBadgeStorage.createStorageAdapter();
+          const store = PulseBadgeState.createStateStore({ storage: storage, fixtures: fixtures });
+          store.bootstrap();
+          store.setActiveScreen('insights');
+          window.__PB_STORE__ = store;
+          const state = store.getState();
+          renderInsightsGrid(state.records, state.counts);
+          renderSnapshot(state);
+          store.subscribe(function (nextState) {
+            renderInsightsGrid(nextState.records, nextState.counts);
+            renderSnapshot(nextState);
+          });
+          const statusEl = document.querySelector('[data-testid="storage-status"]');
+          if (statusEl) {
+            statusEl.textContent = storage.getStatus();
+            statusEl.className = 'storage-status storage-status--' + storage.getStatus();
+          }
+        }
+        if (window.__PULSEBADGE_FIXTURES__) {
+          bootstrapPage();
+        } else {
+          fetch('assets/data/pulsebadge-mini.json')
+            .then(function (response) { return response.json(); })
+            .then(function (fixtures) {
+              window.__PULSEBADGE_FIXTURES__ = fixtures;
+              bootstrapPage();
+            })
+            .catch(function () {
+              window.__PULSEBADGE_FIXTURES__ = { records: [], preferences: { defaultScreen: 'operations' } };
+              bootstrapPage();
+            });
+        }
+      })();
+    </script>
+    <script src="assets/js/us-003/act_filter_insights.js"></script>
+    <script src="assets/js/us-003/act_export_summary.js"></script>
+  </body>
+</html>
