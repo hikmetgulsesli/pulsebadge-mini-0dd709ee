@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Record Operations - PulseBadge Mini</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="app-root" data-setfarm-root="operations" data-testid="setfarm-app-root" class="app-shell">
+      <nav class="app-nav" aria-label="Primary">
+        <div class="app-brand">
+          <span class="app-brand-mark">●</span>
+          <span class="app-brand-name">PulseBadge Mini</span>
+        </div>
+        <div class="app-nav-links">
+          <button class="app-nav-link is-active" type="button" data-action-id="ACT_OPERATIONS" data-screen="operations" onclick="void(0)">Operations</button>
+          <button class="app-nav-link" type="button" data-action-id="ACT_NAV_EDITOR" data-screen="editor" onclick="void(0)">Editor</button>
+          <button class="app-nav-link" type="button" data-action-id="ACT_INSIGHTS" data-screen="insights" onclick="void(0)">Insights</button>
+        </div>
+        <div class="app-nav-meta">
+          <span class="storage-status storage-status--ready" data-testid="storage-status">ready</span>
+        </div>
+      </nav>
+
+      <main class="app-main" data-testid="app-main" data-screen="operations">
+        <header class="screen-header">
+          <h2>Record Operations</h2>
+          <p class="screen-summary">Monitor and manage service records.</p>
+        </header>
+
+        <div class="screen-controls">
+          <input class="app-input" type="text" placeholder="Search records..." data-testid="search-records" data-action-id="ACT_SEARCH_RECORDS" />
+          <button class="app-button" type="button" data-action-id="ACT_FILTER_RECORDS" onclick="void(0)">Filter</button>
+          <button class="app-button app-button--primary" type="button" data-action-id="ACT_CREATE_RECORD" onclick="void(0)">Create Record</button>
+        </div>
+
+        <div class="record-list" data-testid="record-list"></div>
+
+        <div class="screen-controls" style="margin-top: 20px;">
+          <button class="app-button" type="button" data-action-id="ACT_RETRY_LOAD" onclick="void(0)">Retry Load</button>
+        </div>
+      </main>
+    </main>
+
+    <script src="assets/js/pulsebadge-mini.storage.js" defer></script>
+    <script src="assets/js/pulsebadge-mini.state.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        fetch('assets/data/pulsebadge-mini.json')
+          .then(function (response) { return response.json(); })
+          .then(function (fixtures) {
+            window.__PULSEBADGE_FIXTURES__ = fixtures;
+            const scripts = [
+              'assets/js/us-002/act_search_records.js',
+              'assets/js/us-002/act_create_record.js',
+              'assets/js/us-002/act_select_record.js',
+              'assets/js/us-002/act_retry_load.js'
+            ];
+            scripts.forEach(function (src) {
+              const s = document.createElement('script');
+              s.src = src;
+              s.defer = true;
+              document.body.appendChild(s);
+            });
+          })
+          .catch(function () {
+            window.__PULSEBADGE_FIXTURES__ = { records: [], preferences: { defaultScreen: 'operations' } };
+            const scripts = [
+              'assets/js/us-002/act_search_records.js',
+              'assets/js/us-002/act_create_record.js',
+              'assets/js/us-002/act_select_record.js',
+              'assets/js/us-002/act_retry_load.js'
+            ];
+            scripts.forEach(function (src) {
+              const s = document.createElement('script');
+              s.src = src;
+              s.defer = true;
+              document.body.appendChild(s);
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
