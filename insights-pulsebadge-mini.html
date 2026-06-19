@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insights - PulseBadge Mini</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+      .screen-header h1 {
+        margin: 0 0 6px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .storage-status--ready,
+      .record-status--healthy {
+        background: #14532d !important;
+        color: #86efac !important;
+      }
+      .record-status--warning {
+        background: #713f12 !important;
+        color: #fef08a !important;
+      }
+      .record-status--critical {
+        background: #881337 !important;
+        color: #fda4af !important;
+      }
+    </style>
   </head>
   <body>
     <div id="app-root" class="app-shell" data-setfarm-root="insights" data-testid="setfarm-app-root">
@@ -14,20 +34,20 @@
           <span class="app-brand-name">PulseBadge Mini</span>
         </div>
         <div class="app-nav-links">
-          <a class="app-nav-link" href="record-operations-pulsebadge-mini.html">Operations</a>
-          <a class="app-nav-link" href="record-editor-pulsebadge-mini.html">Editor</a>
-          <a class="app-nav-link is-active" href="insights-pulsebadge-mini.html">Insights</a>
+          <a class="app-nav-link" href="record-operations-pulsebadge-mini.html" data-action-id="ACT_OPERATIONS">Operations</a>
+          <a class="app-nav-link" href="record-editor-pulsebadge-mini.html" data-action-id="ACT_EDITOR">Editor</a>
+          <a class="app-nav-link is-active" href="insights-pulsebadge-mini.html" data-action-id="ACT_INSIGHTS">Insights</a>
         </div>
         <div class="app-nav-meta">
           <span class="storage-status" data-testid="storage-status">ready</span>
           <button type="button" class="app-button app-button--small" onclick="console.log('menu')" data-action-id="ACT_MENU" aria-label="Menu">menu</button>
-          <button type="button" class="app-button app-button--small" onclick="console.log('notifications')" data-action-id="ACT_NOTIFICATIONS" aria-label="Notifications">notifications</button>
+          <button type="button" class="app-button app-button--small" onclick="console.log('notifications')" data-action-id="ACT_NAVIGATE" aria-label="Notifications">notifications</button>
           <button type="button" class="app-button app-button--small" onclick="console.log('settings')" data-action-id="ACT_SETTINGS" aria-label="Settings">settings</button>
         </div>
       </nav>
       <main class="app-main" data-testid="app-main">
         <header class="screen-header">
-          <h2>Insights</h2>
+          <h1>Insights</h1>
           <p class="screen-summary">High-level health overview.</p>
         </header>
         <div class="insights-grid" data-testid="insights-grid"></div>
@@ -38,7 +58,7 @@
         </div>
         <div class="screen-controls" style="margin-top: 20px;">
           <button type="button" class="app-button" onclick="void(0)" data-action-id="ACT_VIEW_ALL" aria-label="View all monitors">VIEW ALL</button>
-          <button type="button" class="app-button app-button--primary" onclick="void(0)" data-action-id="ACT_ADD_MONITOR" aria-label="Add monitor">ADD MONITOR</button>
+          <button type="button" class="app-button app-button--primary" data-action-id="ACT_CREATE" aria-label="Add monitor">ADD MONITOR</button>
         </div>
         <div class="snapshot-panel is-hidden" data-testid="snapshot-panel" style="margin-top: 20px;"></div>
       </main>
@@ -105,6 +125,24 @@
             statusEl.textContent = storage.getStatus();
             statusEl.className = 'storage-status storage-status--' + storage.getStatus();
           }
+          document.querySelectorAll('[data-action-id="ACT_CREATE"]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              const store = window.__PB_STORE__;
+              if (!store || typeof store.addRecord !== 'function') return;
+              const nextId = 'mon-' + Date.now();
+              const added = store.addRecord({
+                id: nextId,
+                name: 'New Monitor',
+                host: 'monitor.pulsebadge.local',
+                status: 'healthy',
+                latencyMs: 0,
+                lastChecked: new Date().toISOString()
+              });
+              if (added) {
+                console.log('[insights] Created record:', nextId);
+              }
+            });
+          });
         }
         if (window.__PULSEBADGE_FIXTURES__) {
           bootstrapPage();
