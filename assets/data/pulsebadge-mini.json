@@ -1,0 +1,46 @@
+{
+  "schema": "pulsebadge.mini.fixtures.v1",
+  "records": [
+    {
+      "id": "srv-auth-01",
+      "name": "Auth API",
+      "host": "auth.pulsebadge.local",
+      "status": "healthy",
+      "latencyMs": 42,
+      "lastChecked": "2026-06-19T07:30:00.000Z"
+    },
+    {
+      "id": "srv-billing-02",
+      "name": "Billing Worker",
+      "host": "billing.pulsebadge.local",
+      "status": "warning",
+      "latencyMs": 340,
+      "lastChecked": "2026-06-19T07:28:00.000Z"
+    },
+    {
+      "id": "srv-db-03",
+      "name": "Primary DB",
+      "host": "db.pulsebadge.local",
+      "status": "critical",
+      "latencyMs": 1200,
+      "lastChecked": "2026-06-19T07:25:00.000Z"
+    },
+    {
+      "id": "srv-cache-04",
+      "name": "Redis Cache",
+      "host": "cache.pulsebadge.local",
+      "status": "healthy",
+      "latencyMs": 12,
+      "lastChecked": "2026-06-19T07:31:00.000Z"
+    }
+  ],
+  "preferences": {
+    "theme": "dark",
+    "refreshIntervalSeconds": 30,
+    "defaultScreen": "operations"
+  },
+  "meta": {
+    "version": 1,
+    "generatedAt": "2026-06-19T07:30:00.000Z"
+  }
+}

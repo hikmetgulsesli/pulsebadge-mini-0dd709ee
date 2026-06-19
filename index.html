@@ -7,14 +7,29 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <main data-setfarm-root="baseline" data-testid="setfarm-app-root" class="app-shell">
-      <section class="hero">
-        <p class="eyebrow">Setfarm Static HTML</p>
-        <h1>PulseBadge Mini</h1>
-        <p class="summary">Baseline static page ready for plain HTML, CSS, and JavaScript implementation.</p>
-      </section>
-    </main>
-    <script src="assets/js/app.js" defer></script>
+    <main id="app-root" data-setfarm-root="baseline" data-testid="setfarm-app-root" class="app-shell"></main>
+    <script src="assets/js/pulsebadge-mini.storage.js" defer></script>
+    <script src="assets/js/pulsebadge-mini.state.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        fetch('assets/data/pulsebadge-mini.json')
+          .then(function (response) { return response.json(); })
+          .then(function (fixtures) {
+            window.__PULSEBADGE_FIXTURES__ = fixtures;
+            const appScript = document.createElement('script');
+            appScript.src = 'assets/js/app.js';
+            appScript.defer = true;
+            document.body.appendChild(appScript);
+          })
+          .catch(function () {
+            window.__PULSEBADGE_FIXTURES__ = { records: [], preferences: { defaultScreen: 'operations' } };
+            const appScript = document.createElement('script');
+            appScript.src = 'assets/js/app.js';
+            appScript.defer = true;
+            document.body.appendChild(appScript);
+          });
+      });
+    </script>
     <script src="assets/js/test-bridge.js" defer></script>
   </body>
 </html>
