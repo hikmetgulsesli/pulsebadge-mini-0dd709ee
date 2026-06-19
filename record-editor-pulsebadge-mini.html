@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Record Editor - PulseBadge Mini</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="app-root" class="app-shell" data-setfarm-root="record-editor" data-testid="setfarm-app-root">
+      <nav class="app-nav" aria-label="Primary">
+        <div class="app-brand">
+          <span class="app-brand-mark">●</span>
+          <span class="app-brand-name">PulseBadge Mini</span>
+        </div>
+        <div class="app-nav-links">
+          <a class="app-nav-link" href="record-operations-pulsebadge-mini.html">Operations</a>
+          <a class="app-nav-link is-active" href="record-editor-pulsebadge-mini.html">Editor</a>
+          <a class="app-nav-link" href="index.html">Insights</a>
+        </div>
+        <div class="app-nav-meta">
+          <span class="storage-status" data-testid="storage-status">ready</span>
+          <button type="button" class="app-button app-button--small" onclick="console.log('notifications')" data-action-id="ACT_NOTIFICATIONS" aria-label="Notifications">notifications</button>
+          <button type="button" class="app-button app-button--small" onclick="console.log('settings')" data-action-id="ACT_SETTINGS" aria-label="Settings">settings</button>
+        </div>
+      </nav>
+      <main class="app-main" data-testid="app-main">
+        <header class="screen-header">
+          <h2>Record Editor</h2>
+          <p class="screen-summary">Edit the selected service record.</p>
+        </header>
+        <form class="record-form" data-testid="record-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="record-name">Service name</label>
+            <input class="app-input" id="record-name" type="text" placeholder="e.g., Auth API" data-testid="record-name" />
+          </div>
+          <div class="form-group">
+            <label for="record-host">Host</label>
+            <input class="app-input" id="record-host" type="text" placeholder="srv-auth-01" data-testid="record-host" />
+          </div>
+          <div class="form-group">
+            <label for="record-status">Status</label>
+            <select class="app-input app-select" id="record-status" data-testid="record-status">
+              <option value="healthy">healthy</option>
+              <option value="warning">warning</option>
+              <option value="critical">critical</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="app-button app-button--primary" data-action-id="ACT_SAVE_RECORD" data-testid="save-record">Save Record</button>
+            <button type="button" class="app-button" onclick="void(0)" data-action-id="ACT_CANCEL_EDIT" data-testid="cancel-edit">Cancel</button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="assets/js/pulsebadge-mini.storage.js"></script>
+    <script src="assets/js/pulsebadge-mini.state.js"></script>
+    <script>
+      (function () {
+        'use strict';
+        function bootstrapPage() {
+          const fixtures = window.__PULSEBADGE_FIXTURES__ || { records: [], preferences: { defaultScreen: 'operations' } };
+          const storage = PulseBadgeStorage.createStorageAdapter();
+          const store = PulseBadgeState.createStateStore({ storage: storage, fixtures: fixtures });
+          store.bootstrap();
+          window.__PB_STORE__ = store;
+          const state = store.getState();
+          let record = null;
+          if (state.selectedRecordId) {
+            record = state.records.find(function (r) { return r && r.id === state.selectedRecordId; }) || null;
+          }
+          if (!record && state.records.length > 0) {
+            record = state.records[0];
+            store.setSelectedRecord(record.id);
+          }
+          const nameInput = document.getElementById('record-name');
+          const hostInput = document.getElementById('record-host');
+          const statusSelect = document.getElementById('record-status');
+          if (record) {
+            if (nameInput) nameInput.value = record.name;
+            if (hostInput) hostInput.value = record.host;
+            if (statusSelect) statusSelect.value = record.status;
+          } else {
+            if (nameInput) nameInput.placeholder = 'e.g., Auth API';
+            if (hostInput) hostInput.placeholder = 'srv-auth-01';
+          }
+          const statusEl = document.querySelector('[data-testid="storage-status"]');
+          if (statusEl) {
+            statusEl.textContent = storage.getStatus();
+            statusEl.className = 'storage-status storage-status--' + storage.getStatus();
+          }
+        }
+        if (window.__PULSEBADGE_FIXTURES__) {
+          bootstrapPage();
+        } else {
+          fetch('assets/data/pulsebadge-mini.json')
+            .then(function (response) { return response.json(); })
+            .then(function (fixtures) {
+              window.__PULSEBADGE_FIXTURES__ = fixtures;
+              bootstrapPage();
+            })
+            .catch(function () {
+              window.__PULSEBADGE_FIXTURES__ = { records: [], preferences: { defaultScreen: 'operations' } };
+              bootstrapPage();
+            });
+        }
+      })();
+    </script>
+    <script src="assets/js/us-002/act_save_record.js"></script>
+    <script src="assets/js/us-002/act_cancel_edit.js"></script>
+  </body>
+</html>
