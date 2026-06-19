@@ -100,6 +100,16 @@
       placeholder: 'Search records...',
       'data-testid': 'search-records'
     });
+    search.addEventListener('input', function (e) {
+      const query = e.target.value.toLowerCase();
+      const cards = list.querySelectorAll('.record-card');
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const name = card.querySelector('.record-name').textContent.toLowerCase();
+        const host = card.querySelector('.record-host').textContent.toLowerCase();
+        card.style.display = (name.indexOf(query) !== -1 || host.indexOf(query) !== -1) ? '' : 'none';
+      }
+    });
     controls.appendChild(search);
     const createBtn = createElement('button', { className: 'app-button app-button--primary', type: 'button', 'data-action-id': 'ACT_RECORD_CREATE' }, 'Create Record');
     createBtn.addEventListener('click', function () {
@@ -110,17 +120,6 @@
     container.appendChild(controls);
 
     const list = createElement('div', { className: 'record-list' });
-    search.addEventListener('input', function (e) {
-      const query = String(e.target.value || '').toLowerCase();
-      const cards = list.querySelectorAll('.record-card');
-      for (const card of cards) {
-        const nameEl = card.querySelector('.record-name');
-        const hostEl = card.querySelector('.record-host');
-        const name = nameEl ? String(nameEl.textContent).toLowerCase() : '';
-        const host = hostEl ? String(hostEl.textContent).toLowerCase() : '';
-        card.style.display = name.indexOf(query) >= 0 || host.indexOf(query) >= 0 ? '' : 'none';
-      }
-    });
     if (state.records.length === 0) {
       list.appendChild(createElement('p', { className: 'empty-state' }, 'No records found.'));
     } else {
