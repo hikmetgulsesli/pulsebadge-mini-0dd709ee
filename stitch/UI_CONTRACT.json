@@ -1,0 +1,459 @@
+[
+  {
+    "screenId": "d55e3a8cc3ff4912a9dca95d0e88b6bd",
+    "screenTitle": "Record Editor - PulseBadge Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 118
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 104
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "Save Record",
+        "line": 181
+      },
+      {
+        "type": "input",
+        "label": "e.g., Auth API",
+        "inputType": "text",
+        "placeholder": "e.g., Auth API",
+        "line": 151
+      },
+      {
+        "type": "input",
+        "label": "srv-auth-01",
+        "inputType": "text",
+        "placeholder": "srv-auth-01",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 166
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 144
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 118
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 122
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 104
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "Save Record",
+        "line": 181
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "e.g., Auth API",
+        "inputType": "text",
+        "placeholder": "e.g., Auth API",
+        "line": 151
+      },
+      {
+        "type": "input",
+        "label": "srv-auth-01",
+        "inputType": "text",
+        "placeholder": "srv-auth-01",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 166
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "c59ead8eb3ea4157861b1d3dc80c9ac5",
+    "screenTitle": "Insights - PulseBadge Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 119
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 128
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 145
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "Filter Insights",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "JSON Snapshot",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "View Logs",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "VIEW ALL",
+        "line": 236
+      },
+      {
+        "type": "button",
+        "label": "ADD MONITOR",
+        "line": 282
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 119
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 128
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 145
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "Filter Insights",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "JSON Snapshot",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "View Logs",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "VIEW ALL",
+        "line": 236
+      },
+      {
+        "type": "button",
+        "label": "ADD MONITOR",
+        "line": 282
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "888e513033264b048bb10087d9c8c06b",
+    "screenTitle": "Record Operations - PulseBadge Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 161
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 209
+      },
+      {
+        "type": "button",
+        "label": "Create Record",
+        "line": 214
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 249
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 270
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 291
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 312
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 323
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 376
+      },
+      {
+        "type": "button",
+        "label": "View Logs",
+        "line": 377
+      },
+      {
+        "type": "input",
+        "label": "Search records...",
+        "inputType": "text",
+        "placeholder": "Search records...",
+        "line": 207
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 140
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 161
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 209
+      },
+      {
+        "type": "button",
+        "label": "Create Record",
+        "line": 214
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 249
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 270
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 291
+      },
+      {
+        "type": "button",
+        "label": "Inspect",
+        "line": 312
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 323
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 376
+      },
+      {
+        "type": "button",
+        "label": "View Logs",
+        "line": 377
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search records...",
+        "inputType": "text",
+        "placeholder": "Search records...",
+        "line": 207
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 16,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
