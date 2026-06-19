@@ -52,11 +52,12 @@
           const grid = document.querySelector('[data-testid="insights-grid"]');
           if (!grid) return;
           grid.innerHTML = '';
+          const safeCounts = counts || { total: 0, healthy: 0, warning: 0, critical: 0 };
           const metrics = [
-            { key: 'total', label: 'Total', value: counts.total },
-            { key: 'healthy', label: 'Healthy', value: counts.healthy },
-            { key: 'warning', label: 'Warning', value: counts.warning },
-            { key: 'critical', label: 'Critical', value: counts.critical }
+            { key: 'total', label: 'Total', value: safeCounts.total },
+            { key: 'healthy', label: 'Healthy', value: safeCounts.healthy },
+            { key: 'warning', label: 'Warning', value: safeCounts.warning },
+            { key: 'critical', label: 'Critical', value: safeCounts.critical }
           ];
           metrics.forEach(function (metric) {
             const card = document.createElement('div');
@@ -76,8 +77,9 @@
         function renderSnapshot(state) {
           const panel = document.querySelector('[data-testid="snapshot-panel"]');
           if (!panel) return;
-          if (state.activePanel === 'snapshot') {
-            panel.textContent = JSON.stringify({ records: state.records, counts: state.counts }, null, 2);
+          const safeState = state || {};
+          if (safeState.activePanel === 'snapshot') {
+            panel.textContent = JSON.stringify({ records: safeState.records, counts: safeState.counts }, null, 2);
             panel.classList.remove('is-hidden');
           } else {
             panel.classList.add('is-hidden');
@@ -108,7 +110,12 @@
           bootstrapPage();
         } else {
           fetch('assets/data/pulsebadge-mini.json')
-            .then(function (response) { return response.json(); })
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
             .then(function (fixtures) {
               window.__PULSEBADGE_FIXTURES__ = fixtures;
               bootstrapPage();

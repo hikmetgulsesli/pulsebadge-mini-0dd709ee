@@ -2,8 +2,9 @@
   'use strict';
 
   function buildSummary(state) {
-    const records = Array.isArray(state.records) ? state.records : [];
-    const counts = state.counts || { total: 0, healthy: 0, warning: 0, critical: 0 };
+    const safeState = state || {};
+    const records = Array.isArray(safeState.records) ? safeState.records : [];
+    const counts = safeState.counts || { total: 0, healthy: 0, warning: 0, critical: 0 };
     return {
       exportedAt: new Date().toISOString(),
       summary: {
