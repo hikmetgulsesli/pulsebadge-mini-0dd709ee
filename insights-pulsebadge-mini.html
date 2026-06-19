@@ -11,18 +11,31 @@
         font-size: 24px;
         font-weight: 700;
       }
+      /* High-contrast accessible status badges */
       .storage-status--ready,
+      .storage-status--healthy,
       .record-status--healthy {
         background: #14532d !important;
         color: #86efac !important;
       }
+      .storage-status--warning,
       .record-status--warning {
         background: #713f12 !important;
         color: #fef08a !important;
       }
+      .storage-status--critical,
       .record-status--critical {
         background: #881337 !important;
         color: #fda4af !important;
+      }
+      .storage-status--corrupted,
+      .storage-status--error {
+        background: #450a0a !important;
+        color: #fecaca !important;
+      }
+      .storage-status--loading {
+        background: #422006 !important;
+        color: #fde047 !important;
       }
     </style>
   </head>
@@ -36,7 +49,7 @@
         <div class="app-nav-links">
           <a class="app-nav-link" href="record-operations-pulsebadge-mini.html" data-action-id="ACT_OPERATIONS">Operations</a>
           <a class="app-nav-link" href="record-editor-pulsebadge-mini.html" data-action-id="ACT_EDITOR">Editor</a>
-          <a class="app-nav-link is-active" href="insights-pulsebadge-mini.html" data-action-id="ACT_INSIGHTS">Insights</a>
+          <a class="app-nav-link is-active" href="insights-pulsebadge-mini.html" data-action-id="ACT_INSIGHTS" aria-current="page">Insights</a>
         </div>
         <div class="app-nav-meta">
           <span class="storage-status" data-testid="storage-status">ready</span>

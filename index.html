@@ -3,33 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=insights-pulsebadge-mini.html" />
     <title>PulseBadge Mini</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <main id="app-root" data-setfarm-root="baseline" data-testid="setfarm-app-root" class="app-shell"></main>
-    <script src="assets/js/pulsebadge-mini.storage.js" defer></script>
-    <script src="assets/js/pulsebadge-mini.state.js" defer></script>
+    <main id="app-root" data-setfarm-root="baseline" data-testid="setfarm-app-root" class="app-shell">
+      <h1>PulseBadge Mini</h1>
+      <p>Redirecting to <a href="insights-pulsebadge-mini.html">Insights</a>...</p>
+    </main>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        fetch('assets/data/pulsebadge-mini.json')
-          .then(function (response) { return response.json(); })
-          .then(function (fixtures) {
-            window.__PULSEBADGE_FIXTURES__ = fixtures;
-            const appScript = document.createElement('script');
-            appScript.src = 'assets/js/app.js';
-            appScript.defer = true;
-            document.body.appendChild(appScript);
-          })
-          .catch(function () {
-            window.__PULSEBADGE_FIXTURES__ = { records: [], preferences: { defaultScreen: 'operations' } };
-            const appScript = document.createElement('script');
-            appScript.src = 'assets/js/app.js';
-            appScript.defer = true;
-            document.body.appendChild(appScript);
-          });
-      });
+      window.location.replace('insights-pulsebadge-mini.html');
     </script>
-    <script src="assets/js/test-bridge.js" defer></script>
   </body>
 </html>
