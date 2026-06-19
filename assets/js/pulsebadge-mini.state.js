@@ -129,6 +129,11 @@
         notify();
         return false;
       }
+      if (!record.name || !record.name.trim() || !record.host || !record.host.trim()) {
+        state.lastError = 'Record name and host are required.';
+        notify();
+        return false;
+      }
       if (state.records.some(function (r) { return r && r.id === record.id; })) {
         state.lastError = 'Record already exists: ' + record.id;
         notify();

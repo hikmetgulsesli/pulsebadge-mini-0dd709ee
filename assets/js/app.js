@@ -103,13 +103,24 @@
     controls.appendChild(search);
     const createBtn = createElement('button', { className: 'app-button app-button--primary', type: 'button', 'data-action-id': 'ACT_RECORD_CREATE' }, 'Create Record');
     createBtn.addEventListener('click', function () {
-      const nextId = 'srv-new-' + (state.records.length + 1);
+      const nextId = 'srv-new-' + Date.now();
       store.addRecord({ id: nextId, name: 'New Service', host: 'host.pulsebadge.local', status: 'healthy', latencyMs: 0, lastChecked: new Date().toISOString() });
     });
     controls.appendChild(createBtn);
     container.appendChild(controls);
 
     const list = createElement('div', { className: 'record-list' });
+    search.addEventListener('input', function (e) {
+      const query = String(e.target.value || '').toLowerCase();
+      const cards = list.querySelectorAll('.record-card');
+      for (const card of cards) {
+        const nameEl = card.querySelector('.record-name');
+        const hostEl = card.querySelector('.record-host');
+        const name = nameEl ? String(nameEl.textContent).toLowerCase() : '';
+        const host = hostEl ? String(hostEl.textContent).toLowerCase() : '';
+        card.style.display = name.indexOf(query) >= 0 || host.indexOf(query) >= 0 ? '' : 'none';
+      }
+    });
     if (state.records.length === 0) {
       list.appendChild(createElement('p', { className: 'empty-state' }, 'No records found.'));
     } else {
@@ -174,12 +185,16 @@
     const actions = createElement('div', { className: 'form-actions' });
     const saveBtn = createElement('button', { className: 'app-button app-button--primary', type: 'submit', 'data-action-id': 'ACT_RECORD_SAVE' }, 'Save Record');
     saveBtn.addEventListener('click', function () {
-      store.updateRecord(record.id, {
+      const success = store.updateRecord(record.id, {
         name: nameInput.value,
         host: hostInput.value,
         status: statusSelect.value,
         lastChecked: new Date().toISOString()
       });
+      if (success) {
+        store.setSelectedRecord(null);
+        store.setActiveScreen('operations');
+      }
     });
     actions.appendChild(saveBtn);
 
